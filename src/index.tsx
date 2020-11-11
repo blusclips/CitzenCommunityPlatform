@@ -1,14 +1,31 @@
+/** @format */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// screens home, home, and messages
+
+import LoginScreen from './screens/Login';
+import HomeScreen from './screens/Home';
+import MessagesScreen from './screens/Messages';
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+	<React.StrictMode>
+		<CookiesProvider>
+			<Router>
+				<Switch>
+					<Route exact path='/' component={HomeScreen} />
+					<Route exact path='/login' component={LoginScreen} />
+					<Route path='/messages' component={MessagesScreen} />
+				</Switch>
+			</Router>
+		</CookiesProvider>
+	</React.StrictMode>,
+	document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
