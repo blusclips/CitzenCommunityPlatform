@@ -4,6 +4,8 @@ const path = require('path');
 const express = require('express');
 const app = express(); // create express app
 
+const PORT = process.env.PORT || 8080;
+
 // add middleware
 app.use(express.static('public'));
 
@@ -12,6 +14,6 @@ app.get('/', (req, res) => {
 });
 
 // start express server on port 5000
-app.listen(5000, () => {
+app.listen(PORT, () => {
 	console.log('server started on port 5000');
 });
