@@ -1,19 +1,26 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface Submit {
-	username?: string;
-	password?: string;
+	username: string;
+	password: string;
 }
 
 interface Props {
 	onSubmitField: ({ username, password }: Submit) => void;
+	error: boolean;
 }
-const Template: React.FC<Props> = ({ onSubmitField }: Props) => {
+const Template: React.FC<Props> = ({ onSubmitField, error }: Props) => {
 	const [username, setUsernmae] = useState('');
 	const [password, setPassword] = useState('');
 	const [errorMessage, setErrorMessage] = useState('');
+
+	useEffect(() => {
+		if (error) {
+			setErrorMessage('Incorrec Username/Password');
+		}
+	}, [error]);
 
 	const onSubmitForm = () => {
 		if (username === '') {
@@ -35,13 +42,20 @@ const Template: React.FC<Props> = ({ onSubmitField }: Props) => {
 				<input
 					placeholder='Username'
 					value={username}
-					onChange={(e) => setUsernmae(e.target.value)}
+					onChange={(e) => {
+						setUsernmae(e.target.value);
+						setErrorMessage('');
+					}}
 					className='form-control mt-3'
 				/>
 				<input
 					placeholder='Password'
+					type='password'
 					value={password}
-					onChange={(e) => setPassword(e.target.value)}
+					onChange={(e) => {
+						setPassword(e.target.value);
+						setErrorMessage('');
+					}}
 					className='form-control mt-3'
 				/>
 				<button
