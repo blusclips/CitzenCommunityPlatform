@@ -20,23 +20,21 @@ const Sidebar: React.FC<Props> = ({
 				<nav className='sidebar-nav'>
 					<ul id='sidebarnav'>
 						<li onClick={onDashboardPress} className='sidebar-item pt-2'>
-							<a
+							<div
 								className='sidebar-link waves-effect sidebar-link'
-								href={mode === 'Admin' ? '/admin' : '#'}
 								aria-expanded='false'>
 								<i className='far fa-clock' aria-hidden='true'></i>
 								<span className='hide-menu'>Dashboard</span>
-							</a>
+							</div>
 						</li>
 						{mode === 'Worker' && (
 							<li className='sidebar-item pt-2' onClick={onMessagePress}>
-								<a
+								<div
 									className='sidebar-link waves-effect sidebar-link'
-									href='#'
 									aria-expanded='false'>
 									<i className='far fa-clock' aria-hidden='true'></i>
 									<span className='hide-menu'>Messages</span>
-								</a>
+								</div>
 							</li>
 						)}
 						<li className='text-center p-20 upgrade-btn'>

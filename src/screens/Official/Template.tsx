@@ -20,10 +20,15 @@ const Template: React.FC<Props> = ({ onSendMessage, feedback }) => {
 		setDisplayFeedback(data);
 		setToggleFeedback(true);
 	};
+
+	const navigateToDashboard = () => {
+		setToggleFeedback(false);
+	};
+
 	return (
 		<div>
 			<Header mode='Official' />
-			<Sidebar mode='Official' />
+			<Sidebar onDashboardPress={navigateToDashboard} mode='Official' />
 			<div className='page-wrapper'>
 				{!toggleFeedback && (
 					<FeedbackTable
