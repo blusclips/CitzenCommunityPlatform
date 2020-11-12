@@ -3,7 +3,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { CookiesProvider } from 'react-cookie';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
@@ -11,19 +10,21 @@ import reportWebVitals from './reportWebVitals';
 
 import LoginScreen from './screens/Login';
 import HomeScreen from './screens/Home';
+import WorkerScreen from './screens/Worker';
+import OfficialScreen from './screens/Official';
 import MessagesScreen from './screens/Messages';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<CookiesProvider>
-			<Router>
-				<Switch>
-					<Route exact path='/' component={HomeScreen} />
-					<Route exact path='/login' component={LoginScreen} />
-					<Route path='/messages' component={MessagesScreen} />
-				</Switch>
-			</Router>
-		</CookiesProvider>
+		<Router>
+			<Switch>
+				<Route exact path='/' component={LoginScreen} />
+				<Route exact path='/admin' component={HomeScreen} />
+				<Route exact path='/worker/:id' component={WorkerScreen} />
+				<Route exact path='/official/:id' component={OfficialScreen} />
+				<Route path='/messages' component={MessagesScreen} />
+			</Switch>
+		</Router>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
