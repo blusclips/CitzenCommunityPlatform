@@ -22,6 +22,7 @@ const AddPersons: React.FC<Props> = ({ onSubmitForm }) => {
 	};
 
 	const onUploadCsv = (data: any) => {
+		const valideKeysInCsvFile = ['what bothers you?', 'age'];
 		let csvData: any = [];
 		for (let i = 0; i < data.length; i++) {
 			if (i !== 0 && i !== data.length - 1) {
@@ -32,7 +33,15 @@ const AddPersons: React.FC<Props> = ({ onSubmitForm }) => {
 				csvData.push(obj);
 			}
 		}
-		setFeedback(csvData);
+
+		if (
+			valideKeysInCsvFile[0] in csvData[0] &&
+			valideKeysInCsvFile[1] in csvData[0]
+		) {
+			setFeedback(csvData);
+		} else {
+			alert('invalid data in thee csv file');
+		}
 	};
 
 	return (

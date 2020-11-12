@@ -41,7 +41,7 @@ const Worker: React.FC = () => {
 			} catch (error) {}
 		};
 		fetchFeedback();
-	}, []);
+	}, [workerId]);
 
 	return (
 		<div

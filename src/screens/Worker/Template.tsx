@@ -7,6 +7,7 @@ import TopBar from '../../components/topBar';
 import FeedbackForm from '../../components/molecules/feedBackForm';
 import FeedbackTable from '../../components/molecules/feedBackTable';
 import MessagesTable from '../../components/molecules/messagesTable';
+import CsvDataTable from '../../components/molecules/csvDataTable';
 import FeedbackProps from '../../props/feedback';
 
 interface Props {
@@ -23,7 +24,9 @@ const Template: React.FC<Props> = ({
 	onFetchMessages,
 }) => {
 	const [displayForm, setDisplayForm] = useState(false);
+	const [toggleFeedback, setToggleFeedback] = useState(false);
 	const [displayMessages, setDisplayMessages] = useState(false);
+	const [displayFeedback, setDisplayFeedback] = useState([]);
 
 	const togglePersonField = () => {
 		setDisplayForm(!displayForm);
@@ -37,10 +40,17 @@ const Template: React.FC<Props> = ({
 	const fetchMessages = () => {
 		onFetchMessages();
 		setDisplayMessages(true);
+		setToggleFeedback(false);
 	};
 
 	const navigateToDashboard = () => {
 		setDisplayMessages(false);
+		setToggleFeedback(false);
+	};
+
+	const displayData = (data: any) => {
+		setDisplayFeedback(data);
+		setToggleFeedback(true);
 	};
 
 	return (
@@ -54,14 +64,19 @@ const Template: React.FC<Props> = ({
 			<div className='page-wrapper'>
 				<TopBar mode='Worker' onButtonClick={togglePersonField} />
 				{displayForm && <FeedbackForm onSubmitForm={addPerson} />}
-				{!displayMessages && (
+				{!displayMessages && !toggleFeedback && (
 					<FeedbackTable
 						mode='Worker'
 						onSendMessage={() => null}
 						data={feedback}
+						onViewData={displayData}
 					/>
 				)}
-				{displayMessages && <MessagesTable data={messages} />}
+				{displayMessages && !toggleFeedback && (
+					<MessagesTable data={messages} />
+				)}
+
+				{toggleFeedback && <CsvDataTable data={displayFeedback} />}
 			</div>
 		</div>
 	);

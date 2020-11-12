@@ -40,8 +40,8 @@ const Template: React.FC<Props> = ({ onSubmitField, error }: Props) => {
 				<div className='row justify-content-md-center pt-5'>
 					<div className='col-md-9 text-center mt-5'>
 						<h2 className='text-dark mt-5'>
-							<span className='font-weight-bold'>Citizen</span> &{' '}
-							<span className='font-weight-bold'>Feedback</span> with{' '}
+							<span className='font-weight-bold'>Citizen</span>
+							<span className='font-weight-bold'>Feedback</span>
 							<span className='border-bottom border-dark'> Platform </span>
 						</h2>
 					</div>

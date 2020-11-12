@@ -8,9 +8,15 @@ interface Props {
 	data: any;
 	mode: 'Worker' | 'Official';
 	onSendMessage: ({ message, workerId }: any) => void;
+	onViewData: (data: any) => void;
 }
 
-const PersonTable: React.FC<Props> = ({ data, mode, onSendMessage }) => {
+const PersonTable: React.FC<Props> = ({
+	data,
+	mode,
+	onSendMessage,
+	onViewData,
+}) => {
 	return (
 		<div className='row'>
 			<div className='col-sm-12'>
@@ -33,7 +39,14 @@ const PersonTable: React.FC<Props> = ({ data, mode, onSendMessage }) => {
 										<td> {i + 1}</td>
 										<td>{item.name}</td>
 										<td>{item.size}</td>
-										<td>{item.feedback.length} </td>
+										<td>
+											<button
+												onClick={() => onViewData(item.feedback)}
+												className='btn btn-sm btn-primary'>
+												{' '}
+												{item.feedback.length} View data{' '}
+											</button>{' '}
+										</td>
 										{mode === 'Official' && (
 											<td>
 												{' '}
