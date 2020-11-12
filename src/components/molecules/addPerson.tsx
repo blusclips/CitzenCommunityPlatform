@@ -22,7 +22,7 @@ const AddPersons: React.FC<Props> = ({ onSubmitForm }) => {
 	};
 
 	return (
-		<div className='col-12 text-center'>
+		<div className='col-12 text-center mb'>
 			<div className='col-5 mt-5'>
 				<Input
 					placeholder='username'
