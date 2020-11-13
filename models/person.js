@@ -16,9 +16,9 @@ try {
 			default: Date.now(),
 		},
 	});
-	Person = mongoose.model('PersonV1', PersonSchema);
+	Person = mongoose.model('Person_V01', PersonSchema);
 } catch (e) {
-	Person = mongoose.model('PersonV1');
+	Person = mongoose.model('Person_V01');
 }
 
 module.exports = Person;

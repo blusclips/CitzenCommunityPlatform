@@ -17,9 +17,9 @@ try {
 			default: Date.now(),
 		},
 	});
-	Feedback = mongoose.model('Feedback', FeedbackSchema);
+	Feedback = mongoose.model('Feedback_V01', FeedbackSchema);
 } catch (e) {
-	Feedback = mongoose.model('Feedback');
+	Feedback = mongoose.model('Feedback_V01');
 }
 
 module.exports = Feedback;

@@ -15,9 +15,9 @@ try {
 			default: Date.now(),
 		},
 	});
-	Message = mongoose.model('Message', MessageSchema);
+	Message = mongoose.model('Message_V01', MessageSchema);
 } catch (e) {
-	Message = mongoose.model('Message');
+	Message = mongoose.model('Message_V01');
 }
 
 module.exports = Message;
